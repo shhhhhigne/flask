@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Application Response{% endblock %}
+
+{% with messages = get_flashed_messages() %}
+      {% for message in messages %}
+          <div>{{ message }}</div>
+      {% endfor %}
+  {% endwith %}
+
+{% block body %}
+
+    Thank you, {{ first_name|title }} {{ last_name|title }}, for applying to be a {{ job|title }}. Your minimum salary requirement is {{ "${:,.2f}".format(salary|float) }}.
+
+{% endblock %}
+
+<!-- I know that the salary doesnt take a number with a comma already in it but I havent been able to figure out how to take that with the formatting I'm doing -->

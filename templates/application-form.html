@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Application Form{% endblock %}
+
+{% block body %}
+    <h1 id='header'>Application Form</h1>
+    <p id='instructions'>Please fill out this application form</p>
+    <form method='POST' action='/application-success'>
+        <lable for='first-name'>First name: </lable>
+        <input id='first-name' type='text' name='first-name'>
+        <br>
+        <lable for='last-name'>Last name: </lable>
+        <input id='last-name' type='text' name='last-name'>
+        <br>
+        <lable for='salary'>Salary: </lable>
+        <input id='salary' type='number' name='salary'>
+        <br>
+        <lable for='job-type'>Job Type: </lable>
+        <select id='job-type' name='job-type'>
+            {% for job in jobs %}
+            <option value='{{ job }}'>{{ job|title }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <input type='submit' name='submit' value='Submit'>
+    </form>
+
+{% endblock %}
